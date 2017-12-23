@@ -1,0 +1,11 @@
+- name: download Hazelcast Management Center
+  get_url: url=http://ns2.1888.spb.ru/management-center-3.9.1.tar.gz dest=/root/management-center-3.9.1.tar.gz
+
+- name: unarchive Hazelcast Management Center
+  unarchive: src=/root/management-center-3.9.1.tar.gz remote_src=True dest=/opt
+
+- name: put systemd unit file
+  template: src=hazelcast-management.service dest=/etc/systemd/system/hazelcast-management.service backup=yes
+
+- name: enable hazelcast-management service
+  service: name=hazelcast-management state=started enabled=yes

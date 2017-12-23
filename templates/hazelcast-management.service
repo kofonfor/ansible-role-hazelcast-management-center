@@ -1,0 +1,9 @@
+[Unit]
+Description=Hazelcast Management Center service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/java -jar /opt/management-center-3.9.1/mancenter-3.9.1.war 8080 mancenter
+
+[Install]
+WantedBy=multi-user.target
